@@ -17,7 +17,7 @@ public:
     }
 
     // Returns the Length of the Array
-    int get_size()
+    int get_length()
     {
         return len;
     }
@@ -31,17 +31,17 @@ public:
     // Gets the Element by an index
     T get_element(int index)
     {
-        if (index < len)
+        if (index < len && index >= 0)
         {
             return array[index];
         }
-        return array[0];
+        return NULL;
     }
 
     // Sets the val for a given index
     void set_element(T val, int index)
     {
-        if (index < len)
+        if (index < len && index >= 0)
         {
             array[index] = val;
         }
@@ -65,6 +65,10 @@ public:
             }
             std::cout << ")" << std::endl;
         }
+        else
+        {
+            std::cout << "Array is Empty!" << std::endl;
+        }
     }
 
     // Checks if the value is present in the Array
@@ -83,14 +87,11 @@ public:
     // Returns the Index of a Given value
     int get_index(T val)
     {
-        if (contains(val))
+        for (int i = 0; i < len; i++)
         {
-            for (int i = 0; i < len; i++)
+            if (array[i] == val)
             {
-                if (array[i] == val)
-                {
-                    return i;
-                }
+                return i;
             }
         }
         return -1;
@@ -102,21 +103,13 @@ public:
         len++;
         if (capacity == len - 1)
         {
-            capacity = (capacity < 4) ? (capacity + 1) : (int)((float)capacity * 1.5f);
-            T *tempArray;
-            if ((len - 1) > 0)
-            {
-                tempArray = new T[len - 1];
-                for (int i = 0; i < len - 1; i++)
-                {
-                    tempArray[i] = array[i];
-                }
-            }
-            array = new T[capacity];
+            capacity *= 2;
+            T *tempArray = new T[capacity];
             for (int i = 0; i < len - 1; i++)
             {
-                array[i] = tempArray[i];
+                tempArray[i] = array[i];
             }
+            array = tempArray;
         }
         array[len - 1] = val;
     }
@@ -124,23 +117,13 @@ public:
     // Removes a value at a given index
     void remove_at_index(int index)
     {
-        if (index < len && index > 0)
+        if (index < len && index >= 0)
         {
             if (len > 1)
             {
-                T *tempArray = new T[len - 1];
-                int tempIndex = 0;
-                for (int i = 0; i < len; i++)
+                for (int i = index; i < len - 1; i++)
                 {
-                    if (i != index)
-                    {
-                        tempArray[tempIndex] = array[i];
-                        tempIndex++;
-                    }
-                }
-                for (int i = 0; i < len - 1; i++)
-                {
-                    array[i] = tempArray[i];
+                    array[i] = array[i + 1];
                 }
             }
             len--;
