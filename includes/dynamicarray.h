@@ -56,19 +56,16 @@ public:
     // Prints the Array
     void print_array()
     {
-        if (len > 0)
+        std::cout << "(";
+        for (int i = 0; i < len; i++)
         {
-            std::cout << "(" << array[0];
-            for (int i = 1; i < len; i++)
+            std::cout << array[i];
+            if (i != len - 1)
             {
-                std::cout << ", " << array[i];
+                std::cout << ", ";
             }
-            std::cout << ")" << std::endl;
         }
-        else
-        {
-            std::cout << "Array is Empty!" << std::endl;
-        }
+        std::cout << ")" << std::endl;
     }
 
     // Checks if the value is present in the Array
@@ -140,9 +137,9 @@ public:
     }
 
 private:
-    T *array;
-    int len;
-    int capacity;
+    T *array;     // The Array List
+    int len;      // Length of the Array
+    int capacity; // Max Size of the Array
 };
 
 #endif // DYANAMIC_ARRAY_H

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <dynamicarray.h>
+#include <linkedlist.h>
 
 void Log(std::string message)
 {
@@ -9,19 +9,20 @@ void Log(std::string message)
 
 int main()
 {
-    Array<float> arr;
-    arr.add_element(2);
-    arr.add_element(5);
-    arr.add_element(6);
-    arr.print_array();
-    arr.remove_element(2);
-    arr.add_element(-7);
-    arr.add_element(11);
-    arr.print_array();
-    arr.remove_element(5);
-    arr.remove_at_index(2);
-    arr.add_element(-9);
-    arr.add_element(-6);
-    arr.print_array();
-    std::cout << arr.get_element(-1) << std::endl;
+    List list;
+    list.print_list();
+    std::cout << list.is_empty() << std::endl;
+    list.add_val(5);
+    list.add_val(-3);
+    list.add_val(8);
+    list.print_list();
+    std::cout << list.get_count() << std::endl;
+    list.clear_list();
+    list.print_list();
+    list.add_val(11);
+    list.add_val(-8);
+    list.add_val(5);
+    list.add_val(-2);
+    list.add_val(10);
+    list.print_list();
 }
