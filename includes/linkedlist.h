@@ -305,6 +305,16 @@ public:
         return arr;
     }
 
+    // Returns the First Element in the List
+    T peek()
+    {
+        if (!is_empty())
+        {
+            return head->data;
+        }
+        return NULL;
+    }
+
 private:
     Node<T> *head; // First Node of the List
     Node<T> *tail; // Last Node of the List
@@ -606,6 +616,16 @@ public:
             index++;
         }
         return arr;
+    }
+
+    // Returns the First Element in the List
+    T peek()
+    {
+        if (!is_empty())
+        {
+            return head->data;
+        }
+        return NULL;
     }
 
 private:
