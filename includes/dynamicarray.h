@@ -11,8 +11,8 @@ public:
     // Constructor to initialize the array with a Size
     Array(int size = 0)
     {
-        len = (size < 0) ? 0 : size;
-        capacity = (len == 0) ? 1 : len;
+        len = 0;
+        capacity = (size == 0) ? 1 : size;
         array = new T[capacity];
     }
 
@@ -68,19 +68,6 @@ public:
         std::cout << ")" << std::endl;
     }
 
-    // Checks if the value is present in the Array
-    bool contains(T val)
-    {
-        for (int i = 0; i < len; i++)
-        {
-            if (array[i] == val)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
     // Returns the Index of a Given value
     int get_index(T val)
     {
@@ -92,6 +79,12 @@ public:
             }
         }
         return -1;
+    }
+
+    // Checks if the value is present in the Array
+    bool contains(T val)
+    {
+        return (get_index(val) != -1);
     }
 
     // Adds a Element ot the Array
