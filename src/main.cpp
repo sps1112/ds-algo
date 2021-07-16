@@ -9,7 +9,7 @@ void Log(std::string message)
 
 int main()
 {
-    List list;
+    DList list;
     list.print_list();
     std::cout << "Is List Empty: " << list.is_empty() << std::endl;
     list.insert_at(9, 0);
