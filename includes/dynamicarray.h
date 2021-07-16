@@ -129,6 +129,18 @@ public:
         }
     }
 
+    // Sets the Memory capacity to the Length
+    void trim_array()
+    {
+        capacity = (len == 0) ? 1 : len;
+        T *tempArray = new T[capacity];
+        for (int i = 0; i < len; i++)
+        {
+            tempArray[i] = array[i];
+        }
+        array = tempArray;
+    }
+
 private:
     T *array;     // The Array List
     int len;      // Length of the Array
