@@ -90,6 +90,13 @@ public:
     // Clears the List
     void clear_list()
     {
+        Node<T> *current = head;
+        while (current != NULL)
+        {
+            Node<T> *temp = current;
+            current = current->next;
+            delete temp;
+        }
         tail = NULL;
         head->next = tail;
         head = NULL;
@@ -101,7 +108,7 @@ public:
         if (index >= 0)
         {
             Node<T> *current = head;
-            for (int i = 1; i <= index; i++)
+            for (int i = 1; i <= index && current != NULL; i++)
             {
                 current = current->next;
             }
@@ -201,6 +208,7 @@ public:
                 {
                     Node<T> *temp = current->next;
                     current->next = temp->next;
+                    delete temp;
                     return;
                 }
                 count++;
@@ -210,7 +218,12 @@ public:
         else if (index == 0)
         {
             tail = (tail == head) ? NULL : tail;
-            head = (is_empty()) ? head : head->next;
+            if (!is_empty())
+            {
+                Node<T> *temp = head;
+                head = head->next;
+                delete temp;
+            }
         }
     }
 
@@ -222,8 +235,10 @@ public:
         {
             if (current->next == tail)
             {
+                Node<T> *temp = tail;
                 current->next = NULL;
                 tail = current;
+                delete temp;
                 return;
             }
             current = current->next;
@@ -240,6 +255,7 @@ public:
             {
                 Node<T> *temp = current->next;
                 current->next = temp->next;
+                delete temp;
                 return;
             }
             current = current->next;
