@@ -1,6 +1,8 @@
 #ifndef STACK_DS_H
 #define STACK_DS_H
 
+#include <dynamicarray.h>
+
 // Template Stack Node Struct
 template <typename T>
 struct StackNode
@@ -28,9 +30,9 @@ public:
     // Stack Value Constructor
     Stack(T val)
     {
-        size = 1;
         StackNode<T> *node = new StackNode<T>(val);
         top = node;
+        size = 1;
     }
 
     // Prints the Complete Stack
@@ -107,6 +109,32 @@ public:
             return top->data;
         }
         return NULL;
+    }
+
+    // Converts Stack to a Static Array
+    T *to_static_array()
+    {
+        T *arr = new T[size];
+        StackNode<T> *node = top;
+        for (int i = 0; i < size && node != NULL; i++)
+        {
+            arr[i] = node->data;
+            node = node->next;
+        }
+        return arr;
+    }
+
+    // Converts Stack to a Dynamic Array
+    Array<T> *to_dynamic_array()
+    {
+        Array<T> *arr = new Array<T>(size);
+        StackNode<T> *node = top;
+        while (node != NULL)
+        {
+            arr->add_element(node->data);
+            node = node->next;
+        }
+        return arr;
     }
 
 private:

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <stack.h>
+#include <queue.h>
 
 void Log(std::string message)
 {
@@ -9,30 +9,44 @@ void Log(std::string message)
 
 int main()
 {
-    StackF stack;
-    stack.print_stack();
-    std::cout << "Is Stack Empty: " << stack.is_empty() << std::endl;
-    stack.push(1);
-    stack.push(3);
-    stack.push(2.4);
-    stack.print_stack();
-    std::cout << "Number of Elements: " << stack.get_size() << std::endl;
-    stack.pop();
-    stack.print_stack();
-    stack.pop();
-    stack.print_stack();
-    stack.pop();
-    stack.print_stack();
-    stack.pop();
-    stack.print_stack();
-    stack.push(2);
-    stack.push(9);
-    stack.push(5.6);
-    stack.push(-11.23);
-    stack.push(-7);
-    stack.print_stack();
-    std::cout << "Top Val is(Peek): " << stack.peek() << std::endl;
-    stack.print_stack();
-    std::cout << "Top Val is(Pop): " << stack.pop() << std::endl;
-    stack.print_stack();
+    QueueF queue;
+    queue.print_queue();
+    std::cout << "Is Queue Empty: " << queue.is_empty() << std::endl;
+    queue.enqueue(1);
+    queue.enqueue(3);
+    queue.enqueue(2);
+    queue.enqueue(-4);
+    queue.print_queue();
+    std::cout << "Number of Elements: " << queue.get_size() << std::endl;
+    queue.dequeue();
+    queue.dequeue();
+    queue.print_queue();
+    queue.enqueue(11);
+    queue.enqueue(5.5);
+    queue.enqueue(7);
+    queue.print_queue();
+    std::cout << "Top Val is(Peek): " << queue.peek() << std::endl;
+    queue.print_queue();
+    std::cout << "Top Val is(Dequeue): " << queue.dequeue() << std::endl;
+    queue.print_queue();
+    std::cout << "Is 7 Present: " << queue.contains(7) << std::endl;
+    queue.enqueue(2.2);
+    queue.enqueue(74);
+    queue.enqueue(23);
+    queue.print_queue();
+    queue.remove(23);
+    queue.remove(7);
+    queue.dequeue();
+    queue.enqueue(11);
+    queue.print_queue();
+    queue.bring_front(2.2);
+    queue.send_back(74);
+    queue.enqueue(32);
+    queue.print_queue();
+    queue.to_dynamic_array()->print_array();
+    queue.free_queue();
+    queue.print_queue();
+    queue.enqueue(1);
+    queue.print_queue();
+    Log("Finish");
 }

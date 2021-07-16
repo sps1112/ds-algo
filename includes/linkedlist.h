@@ -262,12 +262,27 @@ public:
     void remove_val(T val)
     {
         Node<T> *current = head;
+        if (current->data == val)
+        {
+            tail = (tail == head) ? NULL : tail;
+            if (!is_empty())
+            {
+                Node<T> *temp = head;
+                head = head->next;
+                delete temp;
+                return;
+            }
+        }
         while (current != NULL)
         {
             if (current->next != NULL && current->next->data == val)
             {
                 Node<T> *temp = current->next;
                 current->next = temp->next;
+                if (temp == tail)
+                {
+                    tail = current;
+                }
                 delete temp;
                 return;
             }
@@ -572,7 +587,14 @@ public:
             {
                 DNode<T> *temp = current->next;
                 DNode<T> *parent = current->prev;
-                parent->next = temp;
+                if (current != head)
+                {
+                    parent->next = temp;
+                }
+                else
+                {
+                    head = temp;
+                }
                 if (current != tail)
                 {
                     temp->prev = parent;
