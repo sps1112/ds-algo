@@ -19,6 +19,27 @@ struct QueueNode
 template <typename T>
 class Queue
 {
+private:
+    QueueNode<T> *head; // Head of the Queue
+    QueueNode<T> *tail; // Tail of the Queue
+    int size;           // Length of the Queue
+
+    // Appends a new Node at the end of the Queue
+    void enqueue_node(QueueNode<T> *node)
+    {
+        if (is_empty())
+        {
+            head = node;
+            tail = node;
+        }
+        else
+        {
+            tail->next = node;
+            tail = node;
+        }
+        size++;
+    }
+
 public:
     // Default Queue Constructor
     Queue()
@@ -64,22 +85,6 @@ public:
     bool is_empty()
     {
         return (size == 0);
-    }
-
-    // Appends a new Node at the end of the Queue
-    void enqueue_node(QueueNode<T> *node)
-    {
-        if (is_empty())
-        {
-            head = node;
-            tail = node;
-        }
-        else
-        {
-            tail->next = node;
-            tail = node;
-        }
-        size++;
     }
 
     // Appends a new value to th back of the Queue
@@ -223,11 +228,6 @@ public:
         }
         return arr;
     }
-
-private:
-    QueueNode<T> *head; // Head of the Queue
-    QueueNode<T> *tail; // Tail of the Queue
-    int size;           // Length of the Queue
 };
 
 // Default Float Queue Node Type

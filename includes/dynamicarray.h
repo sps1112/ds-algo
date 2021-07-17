@@ -7,6 +7,11 @@
 template <typename T>
 class Array
 {
+private:
+    T *array;     // The Array List
+    int len;      // Length of the Array
+    int capacity; // Max Size of the Array
+
 public:
     // Constructor to initialize the array with a Size
     Array(int size = 0)
@@ -140,11 +145,6 @@ public:
         }
         array = tempArray;
     }
-
-private:
-    T *array;     // The Array List
-    int len;      // Length of the Array
-    int capacity; // Max Size of the Array
 };
 
 #endif // DYANAMIC_ARRAY_H

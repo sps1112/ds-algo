@@ -19,6 +19,25 @@ struct StackNode
 template <typename T>
 class Stack
 {
+private:
+    StackNode<T> *top; // Top Node of the Stack
+    int size;          // Number of Nodes in the Stack
+
+    // Pushes a node to the Top of the Stack
+    void push_node(StackNode<T> *node)
+    {
+        if (is_empty())
+        {
+            top = node;
+        }
+        else
+        {
+            node->next = top;
+            top = node;
+        }
+        size++;
+    }
+
 public:
     // Default Constructor
     Stack()
@@ -62,21 +81,6 @@ public:
     bool is_empty()
     {
         return (size == 0);
-    }
-
-    // Pushes a node to the Top of the Stack
-    void push_node(StackNode<T> *node)
-    {
-        if (is_empty())
-        {
-            top = node;
-        }
-        else
-        {
-            node->next = top;
-            top = node;
-        }
-        size++;
     }
 
     // Pushes a Value to the top of the Stack
@@ -136,10 +140,6 @@ public:
         }
         return arr;
     }
-
-private:
-    StackNode<T> *top; // Top Node of the Stack
-    int size;          // Number of Nodes in the Stack
 };
 
 // Default Float Stack Node

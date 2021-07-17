@@ -34,6 +34,25 @@ struct DNode
 template <typename T>
 class LinkedList
 {
+private:
+    Node<T> *head; // First Node of the List
+    Node<T> *tail; // Last Node of the List
+
+    // Adds a Node at the End of the List
+    void add_node(Node<T> *node)
+    {
+        if (is_empty())
+        {
+            head = node;
+            tail = node;
+        }
+        else
+        {
+            tail->next = node;
+            tail = node;
+        }
+    }
+
 public:
     // Default Linked List Constructor
     LinkedList(Node<T> *head_ = NULL, Node<T> *tail_ = NULL)
@@ -63,21 +82,6 @@ public:
             current = current->next;
         }
         std::cout << "]" << std::endl;
-    }
-
-    // Adds a Node at the End of the List
-    void add_node(Node<T> *node)
-    {
-        if (is_empty())
-        {
-            head = node;
-            tail = node;
-        }
-        else
-        {
-            tail->next = node;
-            tail = node;
-        }
     }
 
     // Adds a Val to the End of the List
@@ -329,16 +333,32 @@ public:
         }
         return NULL;
     }
-
-private:
-    Node<T> *head; // First Node of the List
-    Node<T> *tail; // Last Node of the List
 };
 
 // A Template Doubly Linked List
 template <typename T>
 class DoubleLinkedList
 {
+private:
+    DNode<T> *head; // First Node of the List
+    DNode<T> *tail; // Last Node of the List
+
+    // Adds a Node at the End of the List
+    void add_node(DNode<T> *node)
+    {
+        if (is_empty())
+        {
+            head = node;
+            tail = node;
+        }
+        else
+        {
+            tail->next = node;
+            node->prev = tail;
+            tail = node;
+        }
+    }
+
 public:
     // Default Linked List Constructor
     DoubleLinkedList(DNode<T> *head_ = NULL, DNode<T> *tail_ = NULL)
@@ -368,22 +388,6 @@ public:
             current = current->next;
         }
         std::cout << "]" << std::endl;
-    }
-
-    // Adds a Node at the End of the List
-    void add_node(DNode<T> *node)
-    {
-        if (is_empty())
-        {
-            head = node;
-            tail = node;
-        }
-        else
-        {
-            tail->next = node;
-            node->prev = tail;
-            tail = node;
-        }
     }
 
     // Adds a Val to the End of the List
@@ -649,10 +653,6 @@ public:
         }
         return NULL;
     }
-
-private:
-    DNode<T> *head; // First Node of the List
-    DNode<T> *tail; // Last Node of the List
 };
 
 // Default Float Single Node
