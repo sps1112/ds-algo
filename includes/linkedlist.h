@@ -333,6 +333,29 @@ public:
         }
         return NULL;
     }
+
+    // Reverses the linked list
+    void reverse_list()
+    {
+        if (!is_empty())
+        {
+            Node<T> *node1 = head;
+            Node<T> *node2 = head->next;
+            head->next = NULL;
+            while (node1 != NULL && node2 != NULL)
+            {
+                Node<T> *temp = node2->next;
+                node2->next = node1;
+                node1 = node2;
+                node2 = temp;
+                if (node2 == NULL)
+                {
+                    tail = head;
+                    head = node1;
+                }
+            }
+        }
+    }
 };
 
 // A Template Doubly Linked List
@@ -652,6 +675,31 @@ public:
             return head->data;
         }
         return NULL;
+    }
+
+    // Reverses the linked list
+    void reverse_list()
+    {
+        if (!is_empty())
+        {
+            DNode<T> *node1 = head;
+            DNode<T> *node2 = head->next;
+            head->next = NULL;
+            head->prev = node2;
+            while (node1 != NULL && node2 != NULL)
+            {
+                DNode<T> *temp = node2->next;
+                node2->next = node1;
+                node2->prev = temp;
+                node1 = node2;
+                node2 = temp;
+                if (node2 == NULL)
+                {
+                    tail = head;
+                    head = node1;
+                }
+            }
+        }
     }
 };
 

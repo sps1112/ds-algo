@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <heap.h>
+#include <linkedlist.h>
 
 void Log(std::string message)
 {
@@ -9,29 +9,15 @@ void Log(std::string message)
 
 int main()
 {
-    HeapF heap;
-    heap.print_heap();
-    heap.insert(1);
-    heap.print_heap();
-    heap.insert(2);
-    heap.print_heap();
-    heap.insert(-1);
-    heap.print_heap();
-    heap.poll();
-    heap.print_heap();
-    heap.insert(3);
-    heap.print_heap();
-    heap.insert(-2);
-    heap.print_heap();
-    heap.insert(5);
-    heap.print_heap();
-    heap.insert(9);
-    heap.print_heap();
-    heap.poll();
-    heap.print_heap();
-    heap.poll();
-    heap.print_heap();
-    heap.remove(2);
-    heap.print_heap();
+    DList list;
+    list.add_val(1);
+    list.add_val(3);
+    list.add_val(5);
+    list.add_val(-2);
+    list.add_val(7);
+    list.add_val(-3);
+    list.print_list();
+    list.reverse_list();
+    list.print_list();
     Log("Finish");
 }
