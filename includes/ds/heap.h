@@ -180,7 +180,6 @@ public:
         T val = arr->get_element(0);
         switch_elements(0, arr->get_length() - 1);
         arr->remove_at_index(arr->get_length() - 1);
-        print_heap();
         bubble_down(0);
         return val;
     }
