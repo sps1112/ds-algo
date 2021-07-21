@@ -1,5 +1,5 @@
-#ifndef LINKEDLIST_H
-#define LINKEDLIST_H
+#ifndef LINKEDLIST_DS_H
+#define LINKEDLIST_DS_H
 
 #include <ds/dynamicarray.h>
 #include <iostream>
@@ -714,4 +714,4 @@ using List = LinkedList<float>;
 // Default Float Double Linked List Type Class
 using DList = DoubleLinkedList<float>;
 
-#endif // LINKEDLIST_H
+#endif // LINKEDLIST_DS_H

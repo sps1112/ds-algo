@@ -1,5 +1,5 @@
-#ifndef HEAP_H
-#define HEAP_H
+#ifndef HEAP_DS_H
+#define HEAP_DS_H
 
 #include <ds/dynamicarray.h>
 #include <cmath>
@@ -225,4 +225,4 @@ public:
 // Default Float Heap Class Type
 using HeapF = Heap<float>;
 
-#endif // HEAP_H
+#endif // HEAP_DS_H

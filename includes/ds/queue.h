@@ -236,4 +236,4 @@ using QNode = QueueNode<float>;
 // Default Float Queue Type
 using QueueF = Queue<float>;
 
-#endif // QUEUE_h
+#endif // QUEUE_DS_H

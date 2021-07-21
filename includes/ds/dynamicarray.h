@@ -1,5 +1,5 @@
-#ifndef DYNAMIC_ARRAY_H
-#define DYNAMIC_ARRAY_H
+#ifndef DYNAMIC_ARRAY_DS_H
+#define DYNAMIC_ARRAY_DS_H
 
 #include <iostream>
 
@@ -207,4 +207,4 @@ Array<T> *merge_arrays(Array<T> *array1, Array<T> *array2)
     return array;
 }
 
-#endif // DYANAMIC_ARRAY_H
+#endif // DYANAMIC_ARRAY_DS_H
