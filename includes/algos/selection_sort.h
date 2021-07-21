@@ -5,7 +5,7 @@
 
 // Sorts an Array by using Selection Sort
 template <typename T>
-void selection_sort(T *array, int size, bool minSort = true)
+void selection_sort(T array[], int size, bool minSort = true)
 {
     for (int i = 0; i < size - 1; i++)
     {

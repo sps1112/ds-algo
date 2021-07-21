@@ -5,7 +5,7 @@
 
 // Searches for Val in the Array. Time=O(n) Space=O(1)
 template <typename T>
-int linear_search(T *array, int length, T val)
+int linear_search(T array[], int length, T val)
 {
     for (int i = 0; i < length; i++)
     {

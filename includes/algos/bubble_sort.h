@@ -5,7 +5,7 @@
 
 // Sorts an Array by using Bubble Sort
 template <typename T>
-void bubble_sort(T *array, int size, bool minSort = true)
+void bubble_sort(T array[], int size, bool minSort = true)
 {
     for (int i = 0; i < size - 1; i++)
     {

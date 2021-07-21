@@ -1,13 +1,7 @@
 #include <iostream>
 #include <string>
-#include <ds/dynamicarray.h>
-#include <algos/linear_search.h>
-#include <algos/binary_search.h>
-#include <algos/selection_sort.h>
-#include <algos/bubble_sort.h>
-#include <algos/insertion_sort.h>
-#include <algos/merge_sort.h>
-#include <algos/quick_sort.h>
+#include <algos/heap_sort.h>
+#include <ds/hashmap.h>
 
 void Log(std::string message)
 {
@@ -25,9 +19,9 @@ int main()
     /*int array[] = {4, 3, 2, 10, 12, 1, 5, 6};
     Array<int> nArray(array, 8);*/
     nArray.print_array();
-    quick_sort(&nArray, 0, nArray.get_length());
+    heap_sort(&nArray);
     nArray.print_array();
-    quick_sort(&nArray, 0, nArray.get_length(), false);
+    heap_sort(&nArray, false);
     nArray.print_array();
     Log("Finish");
 }

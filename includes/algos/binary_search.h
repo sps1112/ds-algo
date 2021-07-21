@@ -3,7 +3,7 @@
 
 // Searches for Val in the Array. Time=O(log n) Space=O(1)
 template <typename T>
-int binary_search(T *array, int length, T val, bool minSorted = true)
+int binary_search(T array[], int length, T val, bool minSorted = true)
 {
     int l = 0;
     int u = length - 1;
@@ -55,7 +55,7 @@ int binary_search(Array<T> *array, T val, bool minSorted = true)
 
 // Searches for Val in the Array. Time=O(log n) Space=O(log n)
 template <typename T>
-int recursive_binary_search(T *array, int start, int end, T val, bool minSorted = true)
+int recursive_binary_search(T array[], int start, int end, T val, bool minSorted = true)
 {
     if (end <= start)
     {
