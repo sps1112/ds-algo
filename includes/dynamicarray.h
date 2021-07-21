@@ -21,6 +21,18 @@ public:
         array = new T[capacity];
     }
 
+    // Constructor to initialize the array with another array
+    Array(T arr[], int n)
+    {
+        len = 0;
+        capacity = (n == 0) ? 1 : n;
+        array = new T[capacity];
+        for (int i = 0; i < n; i++)
+        {
+            add_element(arr[i]);
+        }
+    }
+
     // Returns the Length of the Array
     int get_length()
     {
@@ -109,6 +121,23 @@ public:
         array[len - 1] = val;
     }
 
+    // Inserts an element at the middle of the array
+    void insert_at(T val, int index)
+    {
+        if (index <= len && index >= 0)
+        {
+            add_element(val);
+            T temp = get_element(index);
+            for (int i = index + 1; i < len; i++)
+            {
+                T nTemp = get_element(i);
+                set_element(temp, i);
+                temp = nTemp;
+            }
+            set_element(val, index);
+        }
+    }
+
     // Removes a value at a given index
     void remove_at_index(int index)
     {
@@ -146,5 +175,36 @@ public:
         array = tempArray;
     }
 };
+
+// Returns a sub array of Array from [start,end)
+template <typename T>
+Array<T> *get_subarray(Array<T> *array, int start, int end)
+{
+    if (start >= 0 && end <= array->get_length() && start < end)
+    {
+        int nLen = end - start - 1;
+        Array<T> *nArray = new Array<T>(nLen);
+        for (int i = start; i < end; i++)
+        {
+            nArray->add_element(array->get_element(i));
+        }
+        return nArray;
+    }
+    return NULL;
+}
+
+// Returns a merged array of from [array1->array2]
+template <typename T>
+Array<T> *merge_arrays(Array<T> *array1, Array<T> *array2)
+{
+    int len1 = array1->get_length();
+    int len2 = array2->get_length();
+    Array<T> *array = new Array<T> *(len1 + len2);
+    for (int i = 0; i < len1 + len2; i++)
+    {
+        array->add_element(((i < len1) ? (array1->get_element(i)) : (array2->get_element(i - len1))));
+    }
+    return array;
+}
 
 #endif // DYANAMIC_ARRAY_H
