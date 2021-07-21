@@ -1,8 +1,7 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
-#include <dynamicarray.h>
-
+#include <ds/dynamicarray.h>
 #include <iostream>
 
 // Template Node Element Struct for Linked List

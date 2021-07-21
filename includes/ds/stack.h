@@ -1,7 +1,7 @@
 #ifndef STACK_DS_H
 #define STACK_DS_H
 
-#include <dynamicarray.h>
+#include <ds/dynamicarray.h>
 
 // Template Stack Node Struct
 template <typename T>

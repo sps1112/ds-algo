@@ -1,7 +1,7 @@
 #ifndef QUEUE_DS_H
 #define QUEUE_DS_H
 
-#include <dynamicarray.h>
+#include <ds/dynamicarray.h>
 
 // Template Queue Node Struct
 template <typename T>

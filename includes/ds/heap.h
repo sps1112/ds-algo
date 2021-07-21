@@ -1,7 +1,7 @@
 #ifndef HEAP_H
 #define HEAP_H
 
-#include <dynamicarray.h>
+#include <ds/dynamicarray.h>
 #include <cmath>
 
 // Template Heap Class
