@@ -1,7 +1,8 @@
 #ifndef SELECTION_SORT_H
 #define SELECTION_SORT_H
 
-#include <ds/dynamicarray.h>
+// Custom Headers
+#include <ds/arraylist.h>
 
 // Sorts an Array by using Selection Sort
 template <typename T>
@@ -24,9 +25,9 @@ void selection_sort(T array[], int size, bool minSort = true)
     }
 }
 
-// Sorts a Dynamic Array using Selection Sort
+// Sorts an ArrayList using Selection Sort
 template <typename T>
-void selection_sort(Array<T> *array, bool minSort = true)
+void selection_sort(ArrayList<T> *array, bool minSort = true)
 {
     int size = array->get_length();
     for (int i = 0; i < size - 1; i++)

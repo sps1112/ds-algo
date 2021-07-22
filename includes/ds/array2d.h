@@ -1,6 +1,12 @@
 #ifndef ARRAY_2D_H
 #define ARRAY_2D_H
 
+// Custom Headers
+#include <ds/arraylist.h>
+
+// Standard Headers
+#include <iostream>
+
 // A Template 2D Array Class
 template <typename T>
 class Array2D
@@ -167,6 +173,18 @@ public:
             arr[y] = get_element(y, x);
         }
         return arr;
+    }
+
+    // Converts the 2D Array into an Array List
+    ArrayList<T> *to_array_list()
+    {
+        int size = get_total_length();
+        ArrayList<T> *list = new ArrayList<T>(size);
+        for (int i = 0; i < size; i++)
+        {
+            list->add_element(array[i]);
+        }
+        return list;
     }
 };
 

@@ -5,7 +5,7 @@ An Implementation Repo of the various data structures and algorithms.
 ---
 ### Data Structures to Implement
 ---
-- [ ] ArrayList
+- [X] ArrayList
   - [ ] 2D Array
 - [ ] LinkedList
   - [ ] Singly

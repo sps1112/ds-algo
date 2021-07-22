@@ -1,7 +1,8 @@
 #ifndef LINEAR_SEARCH_H
 #define LINEAR_SEARCH_H
 
-#include <ds/dynamicarray.h>
+// Custom Headers
+#include <ds/arraylist.h>
 
 // Searches for Val in the Array. Time=O(n) Space=O(1)
 template <typename T>
@@ -17,9 +18,9 @@ int linear_search(T array[], int length, T val)
     return -1;
 }
 
-// Searches for Val in the Array. Time=O(n) Space=O(1)
+// Searches for Val in the ArrayList. Time=O(n) Space=O(1)
 template <typename T>
-int linear_search(Array<T> *array, T val)
+int linear_search(ArrayList<T> *array, T val)
 {
     int length = array->get_length();
     for (int i = 0; i < length; i++)

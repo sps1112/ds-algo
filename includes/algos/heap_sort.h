@@ -1,8 +1,9 @@
 #ifndef HEAP_SORT_H
 #define HEAP_SORT_H
 
+// Custom Headers
 #include <ds/heap.h>
-#include <ds/dynamicarray.h>
+#include <ds/arraylist.h>
 
 // Sorts an Array using Heap Sort
 template <typename T>
@@ -19,9 +20,9 @@ void heap_sort(T array[], int n, bool minSort = true)
     }
 }
 
-// Sorts a Dynamic Array using Heap Sort
+// Sorts an ArrayList using Heap Sort
 template <typename T>
-void heap_sort(Array<T> *array, bool minSort = true)
+void heap_sort(ArrayList<T> *array, bool minSort = true)
 {
     Heap<T> heap;
     int n = array->get_length();

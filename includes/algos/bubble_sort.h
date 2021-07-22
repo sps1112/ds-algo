@@ -1,7 +1,8 @@
 #ifndef BUBBLE_SORT_H
 #define BUBBLE_SORT_H
 
-#include <ds/dynamicarray.h>
+// Custom Headers
+#include <ds/arraylist.h>
 
 // Sorts an Array by using Bubble Sort
 template <typename T>
@@ -27,9 +28,9 @@ void bubble_sort(T array[], int size, bool minSort = true)
     }
 }
 
-// Sorts a Dynamic Array by using Bubble Sort
+// Sorts an ArrayList by using Bubble Sort
 template <typename T>
-void bubble_sort(Array<T> *array, bool minSort = true)
+void bubble_sort(ArrayList<T> *array, bool minSort = true)
 {
     int size = array->get_length();
     for (int i = 0; i < size - 1; i++)

@@ -1,7 +1,10 @@
 #ifndef LINKEDLIST_DS_H
 #define LINKEDLIST_DS_H
 
-#include <ds/dynamicarray.h>
+// Custom Headers
+#include <ds/arraylist.h>
+
+// Standard Headers
 #include <iostream>
 
 // Template Node Element Struct for Linked List
@@ -308,10 +311,10 @@ public:
         return arr;
     }
 
-    // Converts to Dynamic Array
-    Array<T> *to_dynamic_array()
+    // Converts to an ArrayList
+    ArrayList<T> *to_array_list()
     {
-        Array<T> *arr = new Array<T>(get_count());
+        ArrayList<T> *arr = new ArrayList<T>(get_count());
         Node<T> *current = head;
         int index = 0;
         while (current != NULL)
@@ -651,10 +654,10 @@ public:
         return arr;
     }
 
-    // Converts to Dynamic Array
-    Array<T> *to_dynamic_array()
+    // Converts to an ArrayList
+    ArrayList<T> *to_array_list()
     {
-        Array<T> *arr = new Array<T>(get_count());
+        ArrayList<T> *arr = new ArrayList<T>(get_count());
         DNode<T> *current = head;
         int index = 0;
         while (current != NULL)

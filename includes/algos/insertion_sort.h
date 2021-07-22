@@ -1,11 +1,12 @@
 #ifndef INSERTION_SORT_H
 #define INSERTION_SORT_H
 
-#include <ds/dynamicarray.h>
+// Custom Headers
+#include <ds/arraylist.h>
 
-// Sorts a Dynamic Array using Insertion Sort
+// Sorts an ArrayList using Insertion Sort
 template <typename T>
-void insertion_sort(Array<T> *array, bool minSort = true)
+void insertion_sort(ArrayList<T> *array, bool minSort = true)
 {
     int size = array->get_length();
     for (int i = 0; i < size; i++)
@@ -34,7 +35,7 @@ void insertion_sort(Array<T> *array, bool minSort = true)
 
 // Searches for insertion position via binary search
 template <typename T>
-int binary_search_insertion_sort(Array<T> *array, int start, int end, T val, bool minSort = true)
+int binary_search_insertion_sort(ArrayList<T> *array, int start, int end, T val, bool minSort = true)
 {
     if (end <= start)
     {
@@ -66,9 +67,9 @@ int binary_search_insertion_sort(Array<T> *array, int start, int end, T val, boo
     }
 }
 
-// Sorts a Dynamic Array using Binary Insertion Sort
+// Sorts an ArrayList using Binary Insertion Sort
 template <typename T>
-void binary_insertion_sort(Array<T> *array, bool minSort = true)
+void binary_insertion_sort(ArrayList<T> *array, bool minSort = true)
 {
     int size = array->get_length();
     for (int i = 0; i < size; i++)

@@ -1,11 +1,12 @@
 #ifndef QUICK_SORT_H
 #define QUICK_SORT_H
 
-#include <ds/dynamicarray.h>
+// Custom Headers
+#include <ds/arraylist.h>
 
-// Partitions the Dynamic Array around a pivotand gives the pivot index
+// Partitions the ArrayList around a pivotand gives the pivot index
 template <typename T>
-int partition(Array<T> *array, int start, int end, bool minSort = true)
+int partition(ArrayList<T> *array, int start, int end, bool minSort = true)
 {
     T pivot = array->get_element(end - 1);
     int i = start - 1;
@@ -25,9 +26,9 @@ int partition(Array<T> *array, int start, int end, bool minSort = true)
     return i + 1;
 }
 
-// Sorts a Dynamic Array by using Quick Sort
+// Sorts an ArrayList by using Quick Sort
 template <typename T>
-void quick_sort(Array<T> *array, int start, int end, bool minSort = true)
+void quick_sort(ArrayList<T> *array, int start, int end, bool minSort = true)
 {
     if (start < end - 1)
     {

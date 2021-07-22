@@ -1,7 +1,11 @@
 #ifndef HEAP_DS_H
 #define HEAP_DS_H
 
-#include <ds/dynamicarray.h>
+// Custom Headers
+#include <ds/arraylist.h>
+
+// Standard Headers
+#include <iostream>
 #include <cmath>
 
 // Template Heap Class
@@ -9,8 +13,8 @@ template <typename T>
 class Heap
 {
 private:
-    Array<T> *arr; // Dynamic Array used to store the Heap values
-    bool isMin;    // Whether Heap is a Min Heap or not
+    ArrayList<T> *arr; // ArrayList used to store the Heap values
+    bool isMin;        // Whether Heap is a Min Heap or not
 
     // Gets the Index of the Parent Element
     int get_parent_index(int index)
@@ -123,14 +127,14 @@ public:
     // Default Heap Constructor
     Heap()
     {
-        arr = new Array<T>(0);
+        arr = new ArrayList<T>(0);
         isMin = true;
     }
 
     // Array Heap Constructor
     Heap(T *array, int size)
     {
-        arr = new Array<T>(size);
+        arr = new ArrayList<T>(size);
         isMin = true;
         for (int i = 0; i < size; i++)
         {

@@ -1,6 +1,9 @@
 #ifndef BINARY_SEARCH_H
 #define BINARY_SEARCH_H
 
+// Custom Headers
+#include <ds/arraylist.h>
+
 // Searches for Val in the Array. Time=O(log n) Space=O(1)
 template <typename T>
 int binary_search(T array[], int length, T val, bool minSorted = true)
@@ -27,9 +30,9 @@ int binary_search(T array[], int length, T val, bool minSorted = true)
     return m;
 }
 
-// Searches for Val in the Array. Time=O(log n) Space=O(1)
+// Searches for Val in the ArrayList. Time=O(log n) Space=O(1)
 template <typename T>
-int binary_search(Array<T> *array, T val, bool minSorted = true)
+int binary_search(ArrayList<T> *array, T val, bool minSorted = true)
 {
     int l = 0;
     int u = array->get_length() - 1;
@@ -76,9 +79,9 @@ int recursive_binary_search(T array[], int start, int end, T val, bool minSorted
     }
 }
 
-// Searches for Val in the Array. Time=O(log n) Space=O(log n)
+// Searches for Val in the ArrayList. Time=O(log n) Space=O(log n)
 template <typename T>
-int recursive_binary_search(Array<T> *array, int start, int end, T val, bool minSorted = true)
+int recursive_binary_search(ArrayList<T> *array, int start, int end, T val, bool minSorted = true)
 {
     if (end <= start)
     {

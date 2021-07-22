@@ -1,15 +1,16 @@
 #ifndef MERGE_SORT_H
 #define MERGE_SORT_H
 
-#include <ds/dynamicarray.h>
+// Custom Headers
+#include <ds/arraylist.h>
 
-// Sorts and Merges to sub arrays of Array i.e. [start1,end1)+[start2,end2)
+// Sorts and Merges to sub arrays of the ArrayList i.e. [start1,end1)+[start2,end2)
 template <typename T>
-void sort_and_merge_arrays(Array<T> *array, int start1, int end1, int start2, int end2, bool minSort = true)
+void sort_and_merge_arrays(ArrayList<T> *array, int start1, int end1, int start2, int end2, bool minSort = true)
 {
     int index1 = start1;
     int index2 = start2;
-    Array<T> *nArray = new Array<T>(end2 - start1);
+    ArrayList<T> *nArray = new ArrayList<T>(end2 - start1);
     for (int i = start1; i < end2; i++)
     {
         T val1 = array->get_element(index1);
@@ -50,9 +51,9 @@ void sort_and_merge_arrays(Array<T> *array, int start1, int end1, int start2, in
     delete nArray;
 }
 
-// Sorts a Dynamic Array by using Merge Sort
+// Sorts an ArrayList by using Merge Sort
 template <typename T>
-void merge_sort(Array<T> *array, int start, int end, bool minSort = true)
+void merge_sort(ArrayList<T> *array, int start, int end, bool minSort = true)
 {
     if (end - 1 <= start)
     {

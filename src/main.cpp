@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <ds/array2d.h>
-#include <ds/dynamicarray.h>
+#include <ds/arraylist.h>
 
 void Log(std::string message)
 {
@@ -21,10 +21,10 @@ int main()
     arr.set_element(0, 2, 2);
     arr.print_array();
 
-    Array<int> array2(arr.get_row(0), arr.get_length(0));
+    ArrayList<int> array2(arr.get_row(0), arr.get_length(0));
     array2.print_array();
 
-    Array<int> array3(arr.get_column(0), arr.get_length(1));
+    ArrayList<int> array3(arr.get_column(0), arr.get_length(1));
     array3.print_array();
 
     std::cout << "Index of -3 is: " << arr.get_index(-3) << std::endl;

@@ -1,7 +1,11 @@
 #ifndef STACK_DS_H
 #define STACK_DS_H
 
-#include <ds/dynamicarray.h>
+// Custom Headers
+#include <ds/arraylist.h>
+
+// Standard Headers
+#include <iostream>
 
 // Template Stack Node Struct
 template <typename T>
@@ -128,10 +132,10 @@ public:
         return arr;
     }
 
-    // Converts Stack to a Dynamic Array
-    Array<T> *to_dynamic_array()
+    // Converts Stack to an ArrayList
+    ArrayList<T> *to_array_list()
     {
-        Array<T> *arr = new Array<T>(size);
+        ArrayList<T> *arr = new ArrayList<T>(size);
         StackNode<T> *node = top;
         while (node != NULL)
         {

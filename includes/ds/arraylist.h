@@ -1,28 +1,29 @@
-#ifndef DYNAMIC_ARRAY_DS_H
-#define DYNAMIC_ARRAY_DS_H
+#ifndef ARRAY_LIST_DS_H
+#define ARRAY_LIST_DS_H
 
+// Standard Headers
 #include <iostream>
 
-// The Template Dyanmic Array Class
+// The Template ArrayList Class
 template <typename T>
-class Array
+class ArrayList
 {
 private:
     T *array;     // The Array List
-    int len;      // Length of the Array
-    int capacity; // Max Size of the Array
+    int len;      // Length of the ArrayList
+    int capacity; // Max Size of the ArrayList
 
 public:
-    // Constructor to initialize the array with a Size
-    Array(int size = 0)
+    // Constructor to initialize the ArrayList with a Size
+    ArrayList(int size = 0)
     {
         len = 0;
         capacity = (size == 0) ? 1 : size;
         array = new T[capacity];
     }
 
-    // Constructor to initialize the array with another array
-    Array(T arr[], int n)
+    // Constructor to initialize the ArrayList with an array
+    ArrayList(T arr[], int n)
     {
         len = 0;
         capacity = (n == 0) ? 1 : n;
@@ -33,44 +34,43 @@ public:
         }
     }
 
-    // Returns the Length of the Array
+    // Returns the Length of the ArrayList
     int get_length()
     {
         return len;
     }
 
-    // Checks if the Array is empty
+    // Checks if the ArrayList is empty
     bool is_empty()
     {
         return (len == 0);
     }
 
+    // Checks if the given index is valid
+    bool is_index_valid(int index)
+    {
+        return (index >= 0 && index < len);
+    }
+
     // Gets the Element by an index
     T get_element(int index)
     {
-        if (index < len && index >= 0)
-        {
-            return array[index];
-        }
-        return NULL;
+        return ((is_index_valid(index)) ? array[index] : NULL);
     }
 
     // Sets the val for a given index
     void set_element(T val, int index)
     {
-        if (index < len && index >= 0)
-        {
-            array[index] = val;
-        }
+        array[index] = ((is_index_valid(index)) ? val : array[index]);
     }
 
-    // Clears the Array
+    // Clears the ArrayList
     void clear_array()
     {
         len = 0;
     }
 
-    // Prints the Array
+    // Prints the ArrayList
     void print_array()
     {
         std::cout << "(";
@@ -98,13 +98,13 @@ public:
         return -1;
     }
 
-    // Checks if the value is present in the Array
+    // Checks if the value is present in the ArrayList
     bool contains(T val)
     {
         return (get_index(val) != -1);
     }
 
-    // Adds a Element ot the Array
+    // Adds a Element ot the ArrayList
     void add_element(T val)
     {
         len++;
@@ -121,7 +121,7 @@ public:
         array[len - 1] = val;
     }
 
-    // Inserts an element at the middle of the array
+    // Inserts an element at the middle of the ArrayList
     void insert_at(T val, int index)
     {
         if (index <= len && index >= 0)
@@ -154,7 +154,7 @@ public:
         }
     }
 
-    // Remove the val from the Array
+    // Remove the val from the ArrayList
     void remove_element(T val)
     {
         if (contains(val))
@@ -176,14 +176,14 @@ public:
     }
 };
 
-// Returns a sub array of Array from [start,end)
+// Returns a sub array list of ArrayList from [start,end)
 template <typename T>
-Array<T> *get_subarray(Array<T> *array, int start, int end)
+ArrayList<T> *get_subarraylist(ArrayList<T> *array, int start, int end)
 {
     if (start >= 0 && end <= array->get_length() && start < end)
     {
         int nLen = end - start - 1;
-        Array<T> *nArray = new Array<T>(nLen);
+        ArrayList<T> *nArray = new ArrayList<T>(nLen);
         for (int i = start; i < end; i++)
         {
             nArray->add_element(array->get_element(i));
@@ -193,13 +193,13 @@ Array<T> *get_subarray(Array<T> *array, int start, int end)
     return NULL;
 }
 
-// Returns a merged array of from [array1->array2]
+// Returns a merged ArrayList of from [array1->array2]
 template <typename T>
-Array<T> *merge_arrays(Array<T> *array1, Array<T> *array2)
+ArrayList<T> *merge_arraylists(ArrayList<T> *array1, ArrayList<T> *array2)
 {
     int len1 = array1->get_length();
     int len2 = array2->get_length();
-    Array<T> *array = new Array<T> *(len1 + len2);
+    ArrayList<T> *array = new ArrayList<T> *(len1 + len2);
     for (int i = 0; i < len1 + len2; i++)
     {
         array->add_element(((i < len1) ? (array1->get_element(i)) : (array2->get_element(i - len1))));
@@ -207,4 +207,4 @@ Array<T> *merge_arrays(Array<T> *array1, Array<T> *array2)
     return array;
 }
 
-#endif // DYANAMIC_ARRAY_DS_H
+#endif // ARRAY_LIST_DS_H
