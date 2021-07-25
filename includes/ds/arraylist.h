@@ -64,10 +64,11 @@ public:
         array[index] = ((is_index_valid(index)) ? val : array[index]);
     }
 
-    // Clears the ArrayList
+    // Clears the ArrayList also freeing memory
     void clear_array()
     {
         len = 0;
+        trim_array();
     }
 
     // Prints the ArrayList
@@ -116,6 +117,7 @@ public:
             {
                 tempArray[i] = array[i];
             }
+            delete array;
             array = tempArray;
         }
         array[len - 1] = val;
@@ -172,6 +174,7 @@ public:
         {
             tempArray[i] = array[i];
         }
+        delete array;
         array = tempArray;
     }
 };
@@ -206,5 +209,8 @@ ArrayList<T> *merge_arraylists(ArrayList<T> *array1, ArrayList<T> *array2)
     }
     return array;
 }
+
+// Default FLoat Array List Class
+using Array = ArrayList<float>;
 
 #endif // ARRAY_LIST_DS_H

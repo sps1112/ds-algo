@@ -96,8 +96,8 @@ public:
     // Returns the number of Nodes in the List
     int get_count()
     {
-        int count = 0;
         Node<T> *current = head;
+        int count = 0;
         while (current != NULL)
         {
             current = current->next;
@@ -127,11 +127,16 @@ public:
         if (index >= 0)
         {
             Node<T> *current = head;
-            for (int i = 1; i <= index && current != NULL; i++)
+            int count = 0;
+            while (current != NULL)
             {
+                if (index == count)
+                {
+                    return current;
+                }
                 current = current->next;
+                count++;
             }
-            return current;
         }
         return NULL;
     }
@@ -173,8 +178,8 @@ public:
                     current->data = val;
                     break;
                 }
-                count++;
                 current = current->next;
+                count++;
             }
         }
     }
@@ -182,35 +187,38 @@ public:
     // Inserts a Value at some Index
     void insert_at(T val, int index)
     {
-        Node<T> *node = new Node<T>(val);
-        if (index > 0)
+        if (index >= 0)
         {
-            Node<T> *current = head;
-            int count = 0;
-            while (current != NULL)
+            Node<T> *node = new Node<T>(val);
+            if (index > 0)
             {
-                if (count == index - 1)
+                Node<T> *current = head;
+                int count = 0;
+                while (current != NULL)
                 {
-                    Node<T> *temp = current->next;
-                    node->next = temp;
-                    current->next = node;
-                    if (current == tail)
+                    if (count == index - 1)
                     {
-                        tail = node;
+                        Node<T> *temp = current->next;
+                        node->next = temp;
+                        current->next = node;
+                        if (current == tail)
+                        {
+                            tail = node;
+                        }
+                        return;
                     }
-                    return;
+                    current = current->next;
+                    count++;
                 }
-                count++;
-                current = current->next;
+                tail->next = node;
+                tail = node;
             }
-            tail->next = node;
-            tail = node;
-        }
-        else if (index == 0)
-        {
-            node->next = head;
-            tail = (is_empty()) ? node : tail;
-            head = node;
+            else
+            {
+                node->next = head;
+                tail = (is_empty()) ? node : tail;
+                head = node;
+            }
         }
     }
 
@@ -227,11 +235,15 @@ public:
                 {
                     Node<T> *temp = current->next;
                     current->next = temp->next;
+                    if (temp == tail)
+                    {
+                        tail = current;
+                    }
                     delete temp;
                     return;
                 }
-                count++;
                 current = current->next;
+                count++;
             }
         }
         else if (index == 0)
@@ -267,32 +279,35 @@ public:
     // Removes a Given value from the List
     void remove_val(T val)
     {
-        Node<T> *current = head;
-        if (current->data == val)
+        if (!is_empty())
         {
-            tail = (tail == head) ? NULL : tail;
-            if (!is_empty())
+            Node<T> *current = head;
+            if (current->data == val)
             {
-                Node<T> *temp = head;
-                head = head->next;
-                delete temp;
-                return;
-            }
-        }
-        while (current != NULL)
-        {
-            if (current->next != NULL && current->next->data == val)
-            {
-                Node<T> *temp = current->next;
-                current->next = temp->next;
-                if (temp == tail)
+                tail = (tail == head) ? NULL : tail;
+                if (!is_empty())
                 {
-                    tail = current;
+                    Node<T> *temp = head;
+                    head = head->next;
+                    delete temp;
+                    return;
                 }
-                delete temp;
-                return;
             }
-            current = current->next;
+            while (current != NULL)
+            {
+                if (current->next != NULL && current->next->data == val)
+                {
+                    Node<T> *temp = current->next;
+                    current->next = temp->next;
+                    if (temp == tail)
+                    {
+                        tail = current;
+                    }
+                    delete temp;
+                    return;
+                }
+                current = current->next;
+            }
         }
     }
 
@@ -326,12 +341,12 @@ public:
         return arr;
     }
 
-    // Returns the First Element in the List
-    T peek()
+    // Returns the First or Last Element in the List
+    T peek(bool start = true)
     {
         if (!is_empty())
         {
-            return head->data;
+            return (start) ? head->data : tail->data;
         }
         return NULL;
     }
@@ -425,8 +440,8 @@ public:
     // Returns the number of Nodes in the List
     int get_count()
     {
-        int count = 0;
         DNode<T> *current = head;
+        int count = 0;
         while (current != NULL)
         {
             current = current->next;
@@ -456,11 +471,16 @@ public:
         if (index >= 0)
         {
             DNode<T> *current = head;
-            for (int i = 1; i <= index && current != NULL; i++)
+            int count = 0;
+            while (current != NULL)
             {
+                if (index == count)
+                {
+                    return current;
+                }
                 current = current->next;
+                count++;
             }
-            return current;
         }
         return NULL;
     }
@@ -502,8 +522,8 @@ public:
                     current->data = val;
                     break;
                 }
-                count++;
                 current = current->next;
+                count++;
             }
         }
     }
@@ -511,41 +531,44 @@ public:
     // Inserts a Value at some Index
     void insert_at(T val, int index)
     {
-        DNode<T> *node = new DNode<T>(val);
-        if (index > 0)
+        if (index >= 0)
         {
-            DNode<T> *current = head;
-            int count = 0;
-            while (current != NULL)
+            DNode<T> *node = new DNode<T>(val);
+            if (index > 0)
             {
-                if (count == index)
+                DNode<T> *current = head;
+                int count = 0;
+                while (current != NULL)
                 {
-                    DNode<T> *parent = current->prev;
-                    parent->next = node;
-                    node->prev = parent;
-                    node->next = current;
-                    current->prev = node;
-                    return;
+                    if (count == index)
+                    {
+                        DNode<T> *parent = current->prev;
+                        parent->next = node;
+                        node->prev = parent;
+                        node->next = current;
+                        current->prev = node;
+                        return;
+                    }
+                    current = current->next;
+                    count++;
                 }
-                count++;
-                current = current->next;
-            }
-            tail->next = node;
-            node->prev = tail;
-            tail = node;
-        }
-        else if (index == 0)
-        {
-            node->next = head;
-            if (!is_empty())
-            {
-                head->prev = node;
+                tail->next = node;
+                node->prev = tail;
+                tail = node;
             }
             else
             {
-                tail = node;
+                node->next = head;
+                if (!is_empty())
+                {
+                    head->prev = node;
+                }
+                else
+                {
+                    tail = node;
+                }
+                head = node;
             }
-            head = node;
         }
     }
 
@@ -560,12 +583,12 @@ public:
             {
                 if (count == index)
                 {
-                    DNode<T> *temp = current->next;
+                    DNode<T> *child = current->next;
                     DNode<T> *parent = current->prev;
-                    parent->next = temp;
+                    parent->next = child;
                     if (current != tail)
                     {
-                        temp->prev = parent;
+                        child->prev = parent;
                     }
                     else
                     {
@@ -574,8 +597,8 @@ public:
                     delete current;
                     return;
                 }
-                count++;
                 current = current->next;
+                count++;
             }
         }
         else if (index == 0)
@@ -585,6 +608,7 @@ public:
             {
                 DNode<T> *temp = head;
                 head = head->next;
+                head->prev = NULL;
                 delete temp;
             }
         }
@@ -593,49 +617,56 @@ public:
     // Removes the Element at the End of the List
     void remove_end()
     {
-        if (tail != head && !is_empty())
+        if (!is_empty())
         {
-            DNode<T> *temp = tail->prev;
-            temp->next = NULL;
-            tail = temp;
-        }
-        else if (tail == head)
-        {
-            tail = NULL;
-            head = NULL;
+            DNode<T> *temp = tail;
+            if (tail != head)
+            {
+                tail = tail->prev;
+                tail->next = NULL;
+            }
+            else
+            {
+                tail = NULL;
+                head = NULL;
+            }
+            delete temp;
         }
     }
 
     // Removes a Given value from the List
     void remove_val(T val)
     {
-        DNode<T> *current = head;
-        while (current != NULL)
+        if (!is_empty())
         {
-            if (current->data == val)
+            DNode<T> *current = head;
+            while (current != NULL)
             {
-                DNode<T> *temp = current->next;
-                DNode<T> *parent = current->prev;
-                if (current != head)
+                if (current->data == val)
                 {
-                    parent->next = temp;
+                    DNode<T> *child = current->next;
+                    DNode<T> *parent = current->prev;
+                    if (current != head)
+                    {
+                        parent->next = child;
+                    }
+                    else
+                    {
+                        head = child;
+                    }
+                    if (current != tail)
+                    {
+                        child->prev = parent;
+                    }
+                    else
+                    {
+                        tail = parent;
+                    }
+                    delete current;
+                    return;
                 }
-                else
-                {
-                    head = temp;
-                }
-                if (current != tail)
-                {
-                    temp->prev = parent;
-                }
-                else
-                {
-                    tail = parent;
-                }
-                delete current;
-                return;
+                current = current->next;
             }
-            current = current->next;
         }
     }
 
@@ -669,12 +700,12 @@ public:
         return arr;
     }
 
-    // Returns the First Element in the List
-    T peek()
+    // Returns the First or Last Element in the List
+    T peek(bool start = true)
     {
         if (!is_empty())
         {
-            return head->data;
+            return (start) ? head->data : tail->data;
         }
         return NULL;
     }

@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
-#include <ds/array2d.h>
-#include <ds/arraylist.h>
+#include <ds/linkedlist.h>
 
 void Log(std::string message)
 {
@@ -10,25 +9,30 @@ void Log(std::string message)
 
 int main()
 {
-    int array[] = {1, 3, 5, 7, 9,
+    /*int array[] = {1, 3, 5, 7, 9,
                    0, 2, 4, 6, 8,
                    -1, -3, -5, -7, -9,
-                   -2, -4, -6, -8, -10};
-    Array2D<int> arr(array, 18, 4, 5);
-    arr.print_array();
-    std::cout << arr.get_total_length() << " " << arr.get_length(1) << " " << arr.get_length(0) << std::endl;
-    std::cout << arr.get_element(1, 3) << std::endl;
-    arr.set_element(0, 2, 2);
-    arr.print_array();
-
-    ArrayList<int> array2(arr.get_row(0), arr.get_length(0));
-    array2.print_array();
-
-    ArrayList<int> array3(arr.get_column(0), arr.get_length(1));
-    array3.print_array();
-
-    std::cout << "Index of -3 is: " << arr.get_index(-3) << std::endl;
-    std::cout << "Column of -3 is: " << arr.get_position(-3, 0) << std::endl;
-    std::cout << "Row of -3 is: " << arr.get_position(-3, 1) << std::endl;
+                   -2, -4, -6, -8, -10};*/
+    DList list;
+    list.print_list();
+    for (int i = 0; i < 20; i++)
+    {
+        // list.add_val(array[i]);
+        list.add_val(i);
+        list.reverse_list();
+    }
+    list.print_list();
+    list.insert_at(12, 20);
+    list.print_list();
+    list.reverse_list();
+    list.print_list();
+    std::cout << "Head is: " << list.peek() << " and Tail is: " << list.peek(false) << std::endl;
+    list.remove_at(20);
+    list.add_val(11);
+    list.print_list();
+    std::cout << "Head is: " << list.peek() << " and Tail is: " << list.peek(false) << std::endl;
+    list.reverse_list();
+    list.print_list();
+    std::cout << "Head is: " << list.peek() << " and Tail is: " << list.peek(false) << std::endl;
     Log("Finish");
 }

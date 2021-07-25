@@ -6,10 +6,10 @@ An Implementation Repo of the various data structures and algorithms.
 ### Data Structures to Implement
 ---
 - [X] ArrayList
-  - [ ] 2D Array
-- [ ] LinkedList
-  - [ ] Singly
-  - [ ] Doubly
+  - [X] 2D Array
+- [X] LinkedList
+  - [X] Singly
+  - [X] Doubly
   - [ ] Cyclic
 - [ ] Stack
 - [ ] Queue
@@ -44,3 +44,4 @@ Pathfinding Algos:-
 - [ ] BFS
 - [ ] DFS
 - [ ] Dijkstra
+- [ ] A*
