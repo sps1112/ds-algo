@@ -13,6 +13,7 @@ An Implementation Repo of the various data structures and algorithms.
   - [ ] Cyclic
 - [ ] Stack
 - [ ] Queue
+  - [ ] Priority Queue
 - [ ] Binary Tree
   - [ ] Binary Search Tree
   - [ ] AVL Tree

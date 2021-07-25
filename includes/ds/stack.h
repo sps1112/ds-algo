@@ -2,33 +2,22 @@
 #define STACK_DS_H
 
 // Custom Headers
+#include <ds/node.h>
 #include <ds/arraylist.h>
 
 // Standard Headers
 #include <iostream>
-
-// Template Stack Node Struct
-template <typename T>
-struct StackNode
-{
-    T data;             // Data stored in Node
-    StackNode<T> *next; // Pointer to next node
-    // Default Stack Node Constructor
-    StackNode() : next(NULL) {}
-    // Default Stack Node Data Constructor
-    StackNode(T data_) : data(data_), next(NULL) {}
-};
 
 // Default Stack Class
 template <typename T>
 class Stack
 {
 private:
-    StackNode<T> *top; // Top Node of the Stack
-    int size;          // Number of Nodes in the Stack
+    Node<T> *top; // Top Node of the Stack
+    int size;     // Number of Nodes in the Stack
 
     // Pushes a node to the Top of the Stack
-    void push_node(StackNode<T> *node)
+    void push_node(Node<T> *node)
     {
         if (is_empty())
         {
@@ -53,7 +42,7 @@ public:
     // Stack Value Constructor
     Stack(T val)
     {
-        StackNode<T> *node = new StackNode<T>(val);
+        Node<T> *node = new Node<T>(val);
         top = node;
         size = 1;
     }
@@ -61,7 +50,7 @@ public:
     // Prints the Complete Stack
     void print_stack()
     {
-        StackNode<T> *current = top;
+        Node<T> *current = top;
         std::cout << "[";
         while (current != NULL)
         {
@@ -90,7 +79,7 @@ public:
     // Pushes a Value to the top of the Stack
     void push(T val)
     {
-        StackNode<T> *node = new StackNode<T>(val);
+        Node<T> *node = new Node<T>(val);
         push_node(node);
     }
 
@@ -99,7 +88,7 @@ public:
     {
         if (!is_empty())
         {
-            StackNode<T> *node = top;
+            Node<T> *node = top;
             T data_ = node->data;
             top = top->next;
             size--;
@@ -136,7 +125,7 @@ public:
     ArrayList<T> *to_array_list()
     {
         ArrayList<T> *arr = new ArrayList<T>(size);
-        StackNode<T> *node = top;
+        Node<T> *node = top;
         while (node != NULL)
         {
             arr->add_element(node->data);
@@ -145,9 +134,6 @@ public:
         return arr;
     }
 };
-
-// Default Float Stack Node
-using SNode = StackNode<float>;
 
 // Default Float Stack
 using StackF = Stack<float>;

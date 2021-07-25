@@ -2,35 +2,11 @@
 #define LINKEDLIST_DS_H
 
 // Custom Headers
+#include <ds/node.h>
 #include <ds/arraylist.h>
 
 // Standard Headers
 #include <iostream>
-
-// Template Node Element Struct for Linked List
-template <typename T>
-struct Node
-{
-    T data;        // Data of the Node
-    Node<T> *next; // Pointer to the Next Node
-    // Default Node Constructor
-    Node() : next(NULL) {}
-    // Node Data Constructor
-    Node(T data_) : data(data_), next(NULL) {}
-};
-
-// Template Node Element Struct for Doubly Linked List
-template <typename T>
-struct DNode
-{
-    T data;         // Data of the Node
-    DNode<T> *next; // Pointer to the Next Node
-    DNode<T> *prev; // Pointer to the Previous Node
-    // Default DNode Constructor
-    DNode() : next(NULL), prev(NULL) {}
-    // DNode Data Constructor
-    DNode(T data_) : data(data_), next(NULL), prev(NULL) {}
-};
 
 // A Template Singly Linked List
 template <typename T>
@@ -735,12 +711,6 @@ public:
         }
     }
 };
-
-// Default Float Single Node
-using ListNode = Node<float>;
-
-// Default Float Doubly Linked Node
-using DListNode = DNode<float>;
 
 // Default Float Singly Linked List Type Class
 using List = LinkedList<float>;

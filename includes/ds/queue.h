@@ -2,34 +2,23 @@
 #define QUEUE_DS_H
 
 // Custom Headers
+#include <ds/node.h>
 #include <ds/arraylist.h>
 
 // Standard Headers
 #include <iostream>
-
-// Template Queue Node Struct
-template <typename T>
-struct QueueNode
-{
-    T data;             // Queue Data
-    QueueNode<T> *next; // Pointer to next Node in the queue
-    // Default Queue Constructor
-    QueueNode() : next(NULL) {}
-    // Queue Data Constructor
-    QueueNode(T data_) : data(data_), next(NULL) {}
-};
 
 // Template Queue Class
 template <typename T>
 class Queue
 {
 private:
-    QueueNode<T> *head; // Head of the Queue
-    QueueNode<T> *tail; // Tail of the Queue
-    int size;           // Length of the Queue
+    Node<T> *head; // Head of the Queue
+    Node<T> *tail; // Tail of the Queue
+    int size;      // Length of the Queue
 
     // Appends a new Node at the end of the Queue
-    void enqueue_node(QueueNode<T> *node)
+    void enqueue_node(Node<T> *node)
     {
         if (is_empty())
         {
@@ -56,7 +45,7 @@ public:
     // Queue Value Consructor
     Queue(T val)
     {
-        QueueNode<T> *node = new QueueNode<T>(val);
+        Node<T> *node = new Node<T>(val);
         head = node;
         tail = node;
         size = 1;
@@ -65,7 +54,7 @@ public:
     // Prints the Complete Queue from Head to Tail
     void print_queue()
     {
-        QueueNode<T> *node = head;
+        Node<T> *node = head;
         std::cout << "[";
         while (node != NULL)
         {
@@ -94,7 +83,7 @@ public:
     // Appends a new value to th back of the Queue
     void enqueue(T val)
     {
-        QueueNode<T> *node = new QueueNode<T>(val);
+        Node<T> *node = new Node<T>(val);
         enqueue_node(node);
     }
 
@@ -103,7 +92,7 @@ public:
     {
         if (!is_empty())
         {
-            QueueNode<T> *node = head;
+            Node<T> *node = head;
             T val = head->data;
             head = head->next;
             tail = (head == NULL) ? NULL : tail;
@@ -127,7 +116,7 @@ public:
     // Checks if Element is Present in Queue
     bool contains(T val)
     {
-        QueueNode<T> *node = head;
+        Node<T> *node = head;
         while (node != NULL)
         {
             if (node->data == val)
@@ -142,7 +131,7 @@ public:
     // Removes an Element from the middle of the Queue
     void remove(T val)
     {
-        QueueNode<T> *node = head;
+        Node<T> *node = head;
         if (node->data == val)
         {
             dequeue();
@@ -152,7 +141,7 @@ public:
         {
             if (node->next != NULL && node->next->data == val)
             {
-                QueueNode<T> *temp = node->next;
+                Node<T> *temp = node->next;
                 node->next = temp->next;
                 if (temp == tail)
                 {
@@ -172,7 +161,7 @@ public:
         if (contains(val))
         {
             remove(val);
-            QueueNode<T> *node = new QueueNode<T>(val);
+            Node<T> *node = new Node<T>(val);
             if (!is_empty())
             {
                 node->next = head;
@@ -211,7 +200,7 @@ public:
     T *to_static_array()
     {
         T *arr = new T[size];
-        QueueNode<T> *node = head;
+        Node<T> *node = head;
         for (int i = 0; i < size && node != NULL; i++)
         {
             arr[i] = node->data;
@@ -224,7 +213,7 @@ public:
     ArrayList<T> *to_array_list()
     {
         ArrayList<T> *arr = new ArrayList<T>(size);
-        QueueNode<T> *node = head;
+        Node<T> *node = head;
         while (node != NULL)
         {
             arr->add_element(node->data);
@@ -233,9 +222,6 @@ public:
         return arr;
     }
 };
-
-// Default Float Queue Node Type
-using QNode = QueueNode<float>;
 
 // Default Float Queue Type
 using QueueF = Queue<float>;
