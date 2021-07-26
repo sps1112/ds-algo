@@ -11,7 +11,7 @@ An Implementation Repo of the various data structures and algorithms.
   - [X] Singly
   - [X] Doubly
   - [ ] Cyclic
-- [ ] Stack
+- [X] Stack
 - [ ] Queue
   - [ ] Priority Queue
 - [ ] Binary Tree
