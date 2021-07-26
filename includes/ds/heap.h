@@ -68,7 +68,7 @@ private:
                 }
                 else
                 {
-                    break;
+                    return;
                 }
                 index = pIndex;
             }
@@ -99,12 +99,12 @@ private:
                 }
                 else
                 {
-                    break;
+                    return;
                 }
             }
             else
             {
-                break;
+                return;
             }
         }
     }
@@ -132,7 +132,7 @@ public:
     }
 
     // Array Heap Constructor
-    Heap(T *array, int size)
+    Heap(T array[], int size)
     {
         arr = new ArrayList<T>(size);
         isMin = true;
@@ -149,11 +149,17 @@ public:
         int rows = get_rows();
         int index = 0;
         int columns = 1;
+        std::cout << "Heap:" << std::endl;
         for (int i = 0; i < rows; i++)
         {
-            std::cout << "[";
-            for (int j = 0; j < columns; j++)
+            std::cout << i << ": {";
+            int j;
+            for (j = 0; j < columns; j++)
             {
+                if (j % 2 == 0)
+                {
+                    std::cout << "(";
+                }
                 std::cout << arr->get_element(index);
                 index++;
                 if (index == arr->get_length())
@@ -162,13 +168,19 @@ public:
                 }
                 if (j != columns - 1)
                 {
+                    if (j % 2 != 0)
+                    {
+                        std::cout << ")";
+                    }
                     std::cout << ", ";
                 }
             }
-            std::cout << "] ";
+            std::cout << ")";
+            std::cout << "}";
+            std::cout << " " << std::endl;
             columns *= 2;
         }
-        std::cout << std::endl;
+        std::cout << "-------" << std::endl;
     }
 
     // Inserts a new value to the Heap
@@ -195,17 +207,7 @@ public:
     }
 
     // Removes the Val from the Heap
-    void remove(T val)
-    {
-        int index = arr->get_index(val);
-        if (index_valid(index))
-        {
-            switch_elements(index, arr->get_length() - 1);
-            arr->remove_at_index(arr->get_length() - 1);
-            bubble_up(index);
-            bubble_down(index);
-        }
-    }
+    void remove(T val);
 
     // Removes the Val via a Hash Table
     void remove_hash(T val);

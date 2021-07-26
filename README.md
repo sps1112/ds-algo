@@ -14,11 +14,11 @@ An Implementation Repo of the various data structures and algorithms.
   - [ ] Cyclic
 - [X] Stack
 - [X] Queue
-  - [ ] Priority Queue
+  - [X] Priority Queue
 - [ ] Binary Tree
   - [ ] Binary Search Tree
   - [ ] AVL Tree
-- [ ] Heap
+- [X] Heap
 - [ ] Graph
 - [ ] HashMap
 - [ ] Disjoint Set

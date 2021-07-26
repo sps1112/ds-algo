@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <ds/queue.h>
+#include <ds/heap.h>
 
 void Log(std::string message)
 {
@@ -13,26 +13,18 @@ int main()
                    0, 2, 4, 6, 8,
                    -1, -3, -5, -7, -9,
                    -2, -4, -6, -8, -10};
-    QueueA queue;
-    queue.print_queue();
-    for (int i = 0; i < 10; i++)
+    HeapF heap;
+    heap.print_heap();
+    for (int i = 0; i < 20; i++)
     {
-        queue.enqueue(array[i]);
+        int multi = (i % 2 == 0) ? 1 : -1;
+        heap.insert(i * multi);
+        heap.print_heap();
     }
-    queue.print_queue();
-    queue.dequeue();
-    queue.dequeue();
-    queue.dequeue();
-    queue.print_queue();
-    queue.enqueue(12);
-    queue.enqueue(-14);
-    queue.dequeue();
-    queue.print_queue();
-    std::cout << "Front (Peek): " << queue.peek() << std::endl;
-    queue.print_queue();
-    std::cout << "Front (Pop): " << queue.dequeue() << std::endl;
-    queue.print_queue();
-    queue.free_queue();
-    queue.print_queue();
+    heap.print_heap();
+    for (int i = 0; i < 20; i++)
+    {
+        std::cout << "Rank " << i << ": " << heap.poll() << std::endl;
+    }
     Log("Finish");
 }
