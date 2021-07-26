@@ -349,6 +349,22 @@ public:
             }
         }
     }
+
+    // Reverses a Linked List Recursively from a Start Node
+    void reverse_list_recursive(Node<T> *current, Node<T> *parent = NULL)
+    {
+        if (current == NULL)
+        {
+            head = parent;
+            return;
+        }
+        reverse_list_recursive(current->next, current);
+        current->next = parent;
+        if (parent == NULL)
+        {
+            tail = current;
+        }
+    }
 };
 
 // A Template Doubly Linked List
@@ -709,6 +725,25 @@ public:
                 }
             }
         }
+    }
+
+    // Reverses a Doubly Linked List Recursively from a Start Node
+    void reverse_list_recursive(DNode<T> *current, DNode<T> *parent = NULL)
+    {
+        if (current == NULL)
+        {
+            parent->prev = current;
+            head = parent;
+            return;
+        }
+        reverse_list_recursive(current->next, current);
+        current->next = parent;
+        if (parent == NULL)
+        {
+            tail = current;
+            return;
+        }
+        parent->prev = current;
     }
 };
 
