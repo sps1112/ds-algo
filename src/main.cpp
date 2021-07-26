@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <ds/stack.h>
 #include <ds/queue.h>
 
 void Log(std::string message)
@@ -14,12 +13,26 @@ int main()
                    0, 2, 4, 6, 8,
                    -1, -3, -5, -7, -9,
                    -2, -4, -6, -8, -10};
-    std::string brackets = "[A+B*{C+D}]";
-    std::cout << is_parenthesis_balanced(brackets) << std::endl;
-
-    std::string st = "Hello";
-    std::cout << st << std::endl;
-    st = reverse_string_via_stack(st);
-    std::cout << st << std::endl;
+    QueueA queue;
+    queue.print_queue();
+    for (int i = 0; i < 10; i++)
+    {
+        queue.enqueue(array[i]);
+    }
+    queue.print_queue();
+    queue.dequeue();
+    queue.dequeue();
+    queue.dequeue();
+    queue.print_queue();
+    queue.enqueue(12);
+    queue.enqueue(-14);
+    queue.dequeue();
+    queue.print_queue();
+    std::cout << "Front (Peek): " << queue.peek() << std::endl;
+    queue.print_queue();
+    std::cout << "Front (Pop): " << queue.dequeue() << std::endl;
+    queue.print_queue();
+    queue.free_queue();
+    queue.print_queue();
     Log("Finish");
 }
