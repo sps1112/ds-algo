@@ -8,6 +8,7 @@ An Implementation Repo of the various data structures and algorithms.
 - [X] ArrayList
   - [X] 2D Array
   - [ ] Circular Array
+- [X] List Node
 - [X] LinkedList
   - [X] Singly
   - [X] Doubly
@@ -15,6 +16,8 @@ An Implementation Repo of the various data structures and algorithms.
 - [X] Stack
 - [X] Queue
   - [X] Priority Queue
+- [X] Tree Node
+- [X] Tree
 - [ ] Binary Tree
   - [ ] Binary Search Tree
   - [ ] AVL Tree
