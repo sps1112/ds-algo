@@ -4,9 +4,6 @@
 // Custom Headers
 #include <ds/treenode.h>
 
-// Standard Headers
-#include <iostream>
-
 // Template Tree Class
 template <typename T>
 class Tree
@@ -24,7 +21,7 @@ public:
     // Tree value constructor
     Tree(T val)
     {
-        root->data = val;
+        root = new TNode<T>(val);
     }
 
     // Checks if the Tree is Empty
