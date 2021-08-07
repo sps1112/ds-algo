@@ -113,4 +113,246 @@ public:
     }
 };
 
+// Template Binary Search Tree Class
+template <typename T>
+class BinarySearchTree
+{
+private:
+    BinaryNode<T> *root; // Root Node of BST
+
+    // Adds a Node to the BST
+    void add_to_tree(BinaryNode<T> *node)
+    {
+        bool nodeSet = false;
+        BinaryNode<T> *current = root;
+        while (!nodeSet)
+        {
+            if (node->data <= current->data)
+            {
+                if (current->left != NULL)
+                {
+                    current = current->left;
+                }
+                else
+                {
+                    current->left = node;
+                    nodeSet = true;
+                }
+            }
+            else
+            {
+                if (current->right != NULL)
+                {
+                    current = current->right;
+                }
+                else
+                {
+                    current->right = node;
+                    nodeSet = true;
+                }
+            }
+        }
+    }
+
+public:
+    // Default BST Constructor
+    BinarySearchTree()
+    {
+        root = NULL;
+    }
+
+    // BST Value Constructor
+    BinarySearchTree(T val)
+    {
+        root = new BinaryNode<T>(val);
+    }
+
+    // Checks if the BST is Empty
+    bool is_empty()
+    {
+        return (root == NULL);
+    }
+
+    // Prints the Complete BST
+    void print_tree()
+    {
+        if (!is_empty())
+        {
+            root->print_tree();
+        }
+    }
+
+    // Sets the Root Node of the BST
+    void set_root(BinaryNode<T> *node)
+    {
+        root = node;
+    }
+
+    // Adds a Node to the BST
+    void add_node(T val)
+    {
+        BinaryNode<T> *node = new BinaryNode<T>(val);
+        if (is_empty())
+        {
+            set_root(node);
+        }
+        else
+        {
+            add_to_tree(node);
+        }
+    }
+
+    // Checks if the Node is Present in the Tree
+    bool contains_node(T val)
+    {
+        bool foundNode = false;
+        BinaryNode<T> *current = root;
+        while (!foundNode)
+        {
+            if (val == current->data)
+            {
+                foundNode = true;
+            }
+            else
+            {
+                if (val < current->data)
+                {
+                    if (current->left != NULL)
+                    {
+                        current = current->left;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    if (current->right != NULL)
+                    {
+                        current = current->right;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+        return foundNode;
+    }
+
+    // Removes the Node if Present in the Tree
+    void remove_node(T val)
+    {
+        if (!is_empty())
+        {
+            bool foundNode = false;
+            BinaryNode<T> *current = root;
+            BinaryNode<T> *parent = root;
+            bool isLeft = false;
+            while (!foundNode)
+            {
+                if (val == current->data)
+                {
+                    foundNode = true;
+                }
+                else
+                {
+                    if (val < current->data)
+                    {
+                        if (current->left != NULL)
+                        {
+                            parent = current;
+                            isLeft = true;
+                            current = current->left;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (current->right != NULL)
+                        {
+                            parent = current;
+                            isLeft = false;
+                            current = current->right;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            if (foundNode)
+            {
+                BinaryNode<T> *leftChild = current->left;
+                BinaryNode<T> *rightChild = current->right;
+                if (isLeft)
+                {
+                    parent->left = NULL;
+                    if (leftChild != NULL)
+                    {
+                        parent->left = leftChild;
+                        leftChild->right = rightChild;
+                    }
+                    else
+                    {
+                        parent->left = rightChild;
+                    }
+                }
+                else
+                {
+                    parent->right = NULL;
+                    if (rightChild != NULL)
+                    {
+                        parent->right = rightChild;
+                        rightChild->left = leftChild;
+                    }
+                    else
+                    {
+                        parent->right = leftChild;
+                    }
+                }
+                delete current;
+            }
+        }
+    }
+
+    // Gets the Minimum Val in BST
+    T get_min_val()
+    {
+        BinaryNode<T> *current = root;
+        while (current != NULL)
+        {
+            if (current->left == NULL)
+            {
+                return current->data;
+            }
+            current = current->left;
+        }
+        return NULL;
+    }
+
+    // Gets the Maximum Val in BST
+    T get_max_val()
+    {
+        BinaryNode<T> *current = root;
+        while (current != NULL)
+        {
+            if (current->right == NULL)
+            {
+                return current->data;
+            }
+            current = current->right;
+        }
+        return NULL;
+    }
+};
+// Default Float Binary Search Tree Class
+using BST = BinarySearchTree<float>;
+
 #endif // BINARY_TREE_DS_H

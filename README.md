@@ -19,7 +19,7 @@ An Implementation Repo of the various data structures and algorithms.
 - [X] Tree Node
 - [X] Tree
 - [X] Binary Tree
-  - [ ] Binary Search Tree
+  - [X] Binary Search Tree
   - [ ] AVL Tree
 - [X] Heap
 - [ ] Graph

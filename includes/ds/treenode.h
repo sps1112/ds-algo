@@ -6,6 +6,7 @@
 
 // Standard Headers
 #include <iostream>
+#include <limits>
 
 // Template Tree Node Struct
 template <typename T>
@@ -35,7 +36,7 @@ struct TNode
                 std::cout << " ";
             }
         }
-        std::cout << "|---" << data << std::endl;
+        std::cout << "|-->" << data << std::endl;
         n += 4;
         int size = childrenList->get_length();
         for (int i = 0; i < size; i++)
@@ -217,7 +218,7 @@ struct BinaryNode
                 std::cout << " ";
             }
         }
-        std::cout << "|---" << data << std::endl;
+        std::cout << "|-->" << data << std::endl;
         n += 4;
         if (!is_leaf_node())
         {
@@ -238,7 +239,7 @@ struct BinaryNode
                         std::cout << " ";
                     }
                 }
-                std::cout << "|---" << std::endl;
+                std::cout << "|-->" << std::endl;
             }
             if (right != NULL)
             {
@@ -514,6 +515,43 @@ struct BinaryNode
             rightMinH = right->get_min_height();
         }
         return (abs(rightMaxH - leftMinH) <= 1 && abs(leftMaxH - rightMinH) <= 1);
+    }
+
+    // Checks if the Binary Tree is a Binary Search Tree
+    bool is_binary_search_tree(T lowerBound = 0, T upperBound = 0, bool isRoot = true)
+    {
+        if (isRoot)
+        {
+            isRoot = false;
+            lowerBound = std::numeric_limits<T>::min();
+            upperBound = std::numeric_limits<T>::max();
+            if (!is_balanced_binary_tree())
+            {
+                return false;
+            }
+        }
+        // std::cout << "Lower: " << lowerBound << "  ,  Data: " << data << "  ,  Upper: " << upperBound << std::endl;
+        if (data > upperBound || data < lowerBound)
+        {
+            return false;
+        }
+        bool status = true;
+        if (left != NULL)
+        {
+            status = left->is_binary_search_tree(lowerBound, data, isRoot);
+            if (!status)
+            {
+                return false;
+            }
+        }
+        if (left == NULL || status)
+        {
+            if (right != NULL)
+            {
+                status = right->is_binary_search_tree(data, upperBound, isRoot);
+            }
+        }
+        return status;
     }
 };
 // Default Float Binary Tree Node
