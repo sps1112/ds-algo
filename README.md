@@ -30,23 +30,23 @@ An Implementation Repo of the various data structures and algorithms.
 ### Algos to Implement
 ---
 Searching Algos:-
-- [ ] Linear Search
-- [ ] Binary Search
-- [ ] Recursive Binary Search
+- [X] Linear Search
+- [X] Binary Search
+- [X] Recursive Binary Search
 - [ ] Interpolation Search
 
 Sorting Algos:-
-- [ ] Selection Sort
-- [ ] Bubble Sort
-- [ ] Insertion Sort
-- [ ] Binary Insertion Sort
-- [ ] Merge Sort
-- [ ] Quick Sort
-- [ ] Heap Sort
+- [X] Selection Sort
+- [X] Bubble Sort
+- [X] Insertion Sort
+- [X] Binary Insertion Sort
+- [X] Merge Sort
+- [X] Quick Sort
+- [X] Heap Sort
 - [ ] Shell Sort
 
 Pathfinding Algos:-
-- [ ] BFS
-- [ ] DFS
+- [X] BFS
+- [X] DFS
 - [ ] Dijkstra
 - [ ] A*

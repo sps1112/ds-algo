@@ -79,6 +79,12 @@ public:
         root = node;
     }
 
+    // Returns the Root Node Pointer
+    BinaryNode<T> *get_root()
+    {
+        return root;
+    }
+
     // Gets the Height of the Root of Binary Tree
     int get_height_tree()
     {
@@ -186,6 +192,12 @@ public:
     void set_root(BinaryNode<T> *node)
     {
         root = node;
+    }
+
+    // Returns the Root Node Pointer
+    BinaryNode<T> *get_root()
+    {
+        return root;
     }
 
     // Adds a Node to the BST

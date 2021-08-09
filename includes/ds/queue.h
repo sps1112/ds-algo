@@ -225,7 +225,7 @@ public:
         return (size == 0);
     }
 
-    // Appends a new value to th back of the Queue
+    // Appends a new value to the back of the Queue
     void enqueue(T val)
     {
         Node<T> *node = new Node<T>(val);

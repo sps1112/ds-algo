@@ -45,6 +45,12 @@ public:
         root = node;
     }
 
+    // Returns the Root Node Pointer
+    TNode<T> *get_root()
+    {
+        return root;
+    }
+
     // Gets the Height of the Root Node of the Tree
     int get_height_tree()
     {
