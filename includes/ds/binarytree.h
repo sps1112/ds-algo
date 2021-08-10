@@ -303,33 +303,38 @@ public:
             {
                 BinaryNode<T> *leftChild = current->left;
                 BinaryNode<T> *rightChild = current->right;
-                if (isLeft)
+                if (leftChild == NULL || rightChild == NULL)
                 {
-                    parent->left = NULL;
-                    if (leftChild != NULL)
+                    if (isLeft)
                     {
-                        parent->left = leftChild;
-                        leftChild->right = rightChild;
+                        parent->left = NULL;
                     }
                     else
                     {
-                        parent->left = rightChild;
+                        parent->right = NULL;
                     }
+                    if (!current->is_leaf_node())
+                    {
+                        if (isLeft)
+                        {
+                            parent->left = (leftChild == NULL) ? rightChild : leftChild;
+                        }
+                        else
+                        {
+                            parent->right = (leftChild == NULL) ? rightChild : leftChild;
+                        }
+                    }
+                    delete current;
                 }
                 else
                 {
-                    parent->right = NULL;
-                    if (rightChild != NULL)
-                    {
-                        parent->right = rightChild;
-                        rightChild->left = leftChild;
-                    }
-                    else
-                    {
-                        parent->right = leftChild;
-                    }
+                    BinarySearchTree bst1, bst2;
+                    bst1.set_root(current);
+                    bst2.set_root(current->right);
+                    T min = bst2.get_min_val();
+                    bst1.remove_node(min);
+                    current->data = min;
                 }
-                delete current;
             }
         }
     }
@@ -366,5 +371,10 @@ public:
 };
 // Default Float Binary Search Tree Class
 using BST = BinarySearchTree<float>;
+
+template <typename T>
+int get_inorder_successor(BinaryNode<T> *root)
+{
+}
 
 #endif // BINARY_TREE_DS_H

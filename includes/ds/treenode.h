@@ -525,10 +525,14 @@ struct BinaryNode
             isRoot = false;
             lowerBound = std::numeric_limits<T>::min();
             upperBound = std::numeric_limits<T>::max();
-            if (!is_balanced_binary_tree())
+            if (lowerBound > 0)
+            {
+                lowerBound = -upperBound;
+            }
+            /*if (!is_balanced_binary_tree())
             {
                 return false;
-            }
+            }*/
         }
         // std::cout << "Lower: " << lowerBound << "  ,  Data: " << data << "  ,  Upper: " << upperBound << std::endl;
         if (data > upperBound || data < lowerBound)

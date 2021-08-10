@@ -12,6 +12,10 @@
 template <typename T>
 void print_tree_bfs(TNode<T> *root)
 {
+    if (root == NULL)
+    {
+        return;
+    }
     Queue<TNode<T> *> nextNodes;
     nextNodes.enqueue(root);
     int level = 0;
@@ -44,6 +48,10 @@ void print_tree_bfs(TNode<T> *root)
 template <typename T>
 void print_binarytree_bfs(BinaryNode<T> *root)
 {
+    if (root == NULL)
+    {
+        return;
+    }
     Queue<BinaryNode<T> *> nextNodes;
     nextNodes.enqueue(root);
     int level = 0;
@@ -87,6 +95,10 @@ enum DFS_MODE
 template <typename T>
 void print_binarytree_dfs(BinaryNode<T> *root, DFS_MODE mode = PRE_ORDER_DFS, bool isFirst = true)
 {
+    if (root == NULL)
+    {
+        return;
+    }
     switch (mode)
     {
     case PRE_ORDER_DFS:
