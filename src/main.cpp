@@ -3,6 +3,7 @@
 #include <ds/treenode.h>
 #include <ds/binarytree.h>
 #include <algos/tree_traversal.h>
+#include <ds/graph.h>
 
 void Log(std::string message)
 {

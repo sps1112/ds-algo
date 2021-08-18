@@ -1,5 +1,5 @@
-#ifndef ARRAY_2D_H
-#define ARRAY_2D_H
+#ifndef ARRAY_2D_DS_H
+#define ARRAY_2D_DS_H
 
 // Custom Headers
 #include <ds/arraylist.h>
@@ -188,4 +188,4 @@ public:
     }
 };
 
-#endif // ARRAY_2D_H
+#endif // ARRAY_2D_DS_H
